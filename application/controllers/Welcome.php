@@ -25,4 +25,9 @@ class Welcome extends CI_Controller {
 		$this->load->view('dashboard');
 		$this->load->view('template/footer');
 	}
+	
+	public function Register()
+	{		
+		$this->load->view('dashboard');
+	}
 }
