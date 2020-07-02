@@ -1,13 +1,13 @@
-<footer class="main-footer">
-    <strong>Copyright &copy; 2020 <a href="https://opop.jabarprov.go.id/">OPOP One Pesantren One Product</a>.</strong>
-    All rights reserved.    
-  </footer>
+<footer class="main-footer navbar-gray-dark">
+  <strong>Copyright &copy; 2020 <a href="https://opop.jabarprov.go.id/">OPOP One Pesantren One Product</a>.</strong>
+  All rights reserved.
+</footer>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 

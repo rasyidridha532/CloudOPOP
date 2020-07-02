@@ -7,31 +7,86 @@ class Auth extends CI_Controller
     {
         parent::__construct();
 
-        $this->load->library('form_validation');
+        $this->load->library(array('form_validation', 'Recaptcha'));
+        $this->load->model('M_login');
     }
 
     public function index()
     {
-        $this->load->view('login');
+        $data = array(
+            'action' => site_url('auth/login'),
+            'captcha' => $this->recaptcha->getWidget(),
+            'script_captcha' => $this->recaptcha->getScriptTag()
+        );
+
+        $this->load->view('login', $data);
     }
 
-    public function proses_login()
+    public function login()
     {
-        if ($this->form_validation->run() == false) {
-            $this->load->view('login');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
+            'required' => 'Email Harus Diisi!',
+            'valid_email' => 'Alamat Email Harus Valid!'
+        ]);
+        $this->form_validation->set_rules('password', 'Password', 'required', [
+            'required' => 'Password Harus diisi!',
+        ]);
+
+        $recaptcha = $this->input->post('g-recaptcha-response');
+        $response = $this->recaptcha->verifyResponse($recaptcha);
+
+        if ($this->form_validation->run() == false || !isset($response['success']) || $response['success'] <> true) {
+            $this->index();
         } else {
             $email = $this->input->post('email');
             $password = $this->input->post('password');
 
-            $user = $email;
+            $recaptcha = $this->input->post('g-recaptcha-response');
+            $response = $this->recaptcha->verifyResponse($recaptcha);
+
+            $where = array(
+                'email' => $email,
+                'password' => sha1($password)
+            );
+
+            $cek = $this->M_login->cekLogin('tbl_users', $where)->row_array();
+
+            $nama = $cek['nama'];
+            $gambar = $cek['image'];
+            if ($cek['id_role'] == 1) {
+                $role = 'admin';
+            } else {
+                $role = 'anggota';
+            }
+
+            if (isset($cek)) {
+                $data_session = array(
+                    'role' => $role,
+                    'status' => 'login',
+                    'gambar' => $gambar,
+                    'nama' => $nama
+                );
+                $this->session->set_userdata($data_session);
+                redirect(base_url(""));
+            } else {
+                $this->session->set_flashdata('messagelogin', '<div class="alert alert-warning">Email atau password salah!</div>');
+                redirect('auth');
+            }
         }
     }
 
     public function register()
     {
-        $this->form_validation->set_rules('namalengkap', 'Nama Lengkap', 'required|trim');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+        $this->form_validation->set_rules('namalengkap', 'Nama Lengkap', 'required|trim', [
+            'required' => 'Nama Lengkap Harus Diisi!'
+        ]);
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tbl_users.email]', [
+            'required' => 'Email Harus Diisi!',
+            'valid_email' => 'Alamat Email Harus Valid!',
+            'is_unique' => 'Alamat Email sudah terdaftar!'
+        ]);
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[2]|matches[password2]', [
+            'required' => 'Password Harus diisi!',
             'matches' => 'Password tidak sama!',
             'min_length' => 'Password terlalu pendek!'
         ]);
@@ -42,17 +97,29 @@ class Auth extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('register');
         } else {
-            $data = [
-                'name' => $this->input->post('namalengkap'),
-                'email' => $this->input->post('email'),
-                'password' => $this->input->post('password1')
-            ];
-
-            $this->db->insert('tbl_user', $data);
+            $this->proses_register();
         }
     }
 
     public function proses_register()
     {
+        $data = [
+            'nama' => htmlspecialchars($this->input->post('namalengkap', true)),
+            'email' => $this->input->post('email', true),
+            'password' => sha1($this->input->post('password1')),
+            'image' => 'avatar5.png',
+            'id_role' => 2
+        ];
+
+        $this->db->insert('tbl_users', $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success">Selamat! Akun anda sudah dibuat. Silahkan Login!</div>');
+        redirect('auth');
+    }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        $this->session->set_flashdata('message', '<div class="alert alert-success">Anda sudah log out!</div>');
+        redirect('auth');
     }
 }

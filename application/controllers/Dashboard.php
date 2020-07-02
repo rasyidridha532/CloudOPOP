@@ -1,7 +1,19 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Dashboard extends CI_Controller
+{
+
+	function __construct()
+	{
+		parent::__construct();
+		// $this->load->model('m_wisata');
+
+		$status = $this->session->userdata('status');
+		if (isset($status) != "login") {
+			redirect(base_url("auth"));
+		}
+	}
 
 	/**
 	 * Index Page for this controller.
@@ -20,14 +32,20 @@ class Dashboard extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('template/header');
+		$fotoprofil = $this->session->userdata('gambar');
+		$nama = $this->session->userdata('nama');
+
+		$data['foto'] = $fotoprofil;
+		$data['nama'] = $nama;
+
+		$this->load->view('template/header', $data);
 		$this->load->view('template/sidebar');
 		$this->load->view('dashboard');
 		$this->load->view('template/footer');
 	}
-	
+
 	public function Register()
-	{		
+	{
 		$this->load->view('dashboard');
 	}
 }
