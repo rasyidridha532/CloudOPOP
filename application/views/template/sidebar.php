@@ -14,7 +14,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="<?= base_url(); ?>" class="nav-link active">
+            <a href="<?= base_url(); ?>" class="nav-link <?= $this->uri->segment(1) == 'dashboard' || $this->uri->segment(1) == '' ? 'active' : '' ?>">
               <i class="nav-icon fas fa-house-user"></i>
               <p>
                 Dashboard
@@ -22,7 +22,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= base_url('pesantren'); ?>" class="nav-link <?= $this->uri->segment(1) == 'pesantren' ? 'active' : '' ?>">
               <i class="nav-icon fas fa-mosque"></i>
               <p>
                 Data Pesantren
@@ -30,7 +30,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= base_url('file'); ?>" class="nav-link <?= $this->uri->segment(1) == 'file' ? 'active' : '' ?>">
               <i class="nav-icon fas fa-file-image"></i>
               <p>
                 File OPOP

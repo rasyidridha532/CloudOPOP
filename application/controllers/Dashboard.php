@@ -7,7 +7,6 @@ class Dashboard extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		// $this->load->model('m_wisata');
 
 		$status = $this->session->userdata('status');
 		if (isset($status) != "login") {
@@ -30,22 +29,30 @@ class Dashboard extends CI_Controller
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
 	public function index()
 	{
 		$fotoprofil = $this->session->userdata('gambar');
 		$nama = $this->session->userdata('nama');
+		$role = $this->session->userdata('role');
 
-		$data['foto'] = $fotoprofil;
-		$data['nama'] = $nama;
+		$cekUser = $this->db->count_all('tbl_users');
+
+		$hitungSemuaPesantren = $this->db->count_all('tbl_pesantren');
+
+		$user['countUser'] = $cekUser;
+		$user['hitungPesantren'] = $hitungSemuaPesantren;
+
+		$data = array(
+			'title' => 'Dashboard',
+			'foto' => $fotoprofil,
+			'nama' => $nama,
+			'role' => $role,
+		);
 
 		$this->load->view('template/header', $data);
 		$this->load->view('template/sidebar');
-		$this->load->view('dashboard');
+		$this->load->view('dashboard', $user);
 		$this->load->view('template/footer');
-	}
-
-	public function Register()
-	{
-		$this->load->view('dashboard');
 	}
 }

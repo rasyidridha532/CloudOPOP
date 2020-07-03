@@ -8,7 +8,7 @@ class Auth extends CI_Controller
         parent::__construct();
 
         $this->load->library(array('form_validation', 'Recaptcha'));
-        $this->load->model('M_login');
+        $this->load->model('Login_model');
     }
 
     public function index()
@@ -49,14 +49,14 @@ class Auth extends CI_Controller
                 'password' => sha1($password)
             );
 
-            $cek = $this->M_login->cekLogin('tbl_users', $where)->row_array();
+            $cek = $this->Login_model->cekLogin('tbl_users', $where)->row_array();
 
             $nama = $cek['nama'];
             $gambar = $cek['image'];
             if ($cek['id_role'] == 1) {
-                $role = 'admin';
+                $role = 'Admin';
             } else {
-                $role = 'anggota';
+                $role = 'Anggota';
             }
 
             if (isset($cek)) {
@@ -85,9 +85,8 @@ class Auth extends CI_Controller
             'valid_email' => 'Alamat Email Harus Valid!',
             'is_unique' => 'Alamat Email sudah terdaftar!'
         ]);
-        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[2]|matches[password2]', [
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]', [
             'required' => 'Password Harus diisi!',
-            'matches' => 'Password tidak sama!',
             'min_length' => 'Password terlalu pendek!'
         ]);
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]', [

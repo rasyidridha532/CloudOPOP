@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>OPOP | Dashboard</title>
+  <title><?= $title; ?> | OPOP</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
   <!-- JQVMap -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
@@ -57,7 +59,7 @@
 
               <p>
                 <?= $nama; ?> - Web Developer
-                <small>Member since Nov. 2012</small>
+                <small><?= $role; ?></small>
               </p>
             </li>
             <!-- Menu Footer-->
