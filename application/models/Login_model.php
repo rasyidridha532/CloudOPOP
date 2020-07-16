@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class M_login extends CI_Model
+class Login_model extends CI_Model
 {
     function cekLogin($table, $where)
     {

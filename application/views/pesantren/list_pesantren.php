@@ -46,7 +46,7 @@
                             <th>Alamat</th>
                             <th>Kabupaten</th>
                             <th>Kecamatan</th>
-                            <th>Produk</th>
+                            <th>Link Pesantren</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -58,9 +58,9 @@
                                 <td width="80px"><?php echo ++$start ?></td>
                                 <td><?php echo $pesantren->nama_pesantren ?></td>
                                 <td><?php echo $pesantren->alamat ?></td>
-                                <td><?php echo $pesantren->id_kabupaten ?></td>
-                                <td><?php echo $pesantren->id_kecamatan ?></td>
-                                <td><?php echo $pesantren->produk ?></td>
+                                <td><?php echo $pesantren->nama_kabupaten ?></td>
+                                <td><?php echo $pesantren->nama_kecamatan ?></td>
+                                <td><a href="<?= $pesantren->link_pesantren; ?>"><?= $pesantren->link_pesantren; ?></td>
                                 <td style="text-align:center" width="200px">
                                     <?php
                                     echo anchor(site_url('pesantren/read/' . $pesantren->id_pesantren), 'Read');
