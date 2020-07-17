@@ -18,8 +18,8 @@
                 <input type="text" class="form-control" name="judul" id="judul" placeholder="Judul" value="<?php echo $judul; ?>" />
             </div>
             <div class="form-group">
-                <label class="custom-file-label" for="File">Pilih File...</label>
-                <input type="file" class="custom-file-input" name="file">
+                <label class="col-md-2 control-label" for="File">Pilih File...</label>
+                <input type="file" name="file" class="form-control">
             </div>
             <input type="hidden" name="id_file" value="<?php echo $id_file; ?>" />
             <button type="submit" class="btn btn-primary"><?php echo $button ?></button>
