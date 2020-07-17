@@ -53,7 +53,6 @@ class File extends CI_Controller
         $role = $this->session->userdata('role');
 
         $data = array(
-            'button' => 'Create',
             'action' => site_url('file/create_action'),
             'id_file' => set_value('id_file'),
             'judul' => set_value('judul'),
@@ -63,7 +62,10 @@ class File extends CI_Controller
             'role' => $role,
             'title' => 'Upload File'
         );
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar');
         $this->load->view('file/tbl_file_form', $data);
+        $this->load->view('template/footer');
     }
 
     public function create_action()
@@ -77,6 +79,8 @@ class File extends CI_Controller
                 'judul' => $this->input->post('judul', TRUE),
                 'nama_file' => $this->input->post('nama_file', TRUE),
             );
+
+
 
             $this->File_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -96,7 +100,10 @@ class File extends CI_Controller
                 'judul' => set_value('judul', $row->judul),
                 'nama_file' => set_value('nama_file', $row->nama_file),
             );
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar');
             $this->load->view('file/tbl_file_form', $data);
+            $this->load->view('template/footer');
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('file'));
@@ -139,6 +146,7 @@ class File extends CI_Controller
     {
         $this->form_validation->set_rules('judul', 'judul', 'trim|required');
         $this->form_validation->set_rules('nama_file', 'nama file', 'trim|required');
+        $this->form_validation->set_rules();
 
         $this->form_validation->set_rules('id_file', 'id_file', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
