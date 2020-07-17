@@ -47,6 +47,7 @@
             <th>No</th>
             <th>Judul</th>
             <th>Nama File</th>
+            <th>Link</th>
             <th>Action</th>
         </tr><?php
                 foreach ($file_data as $file) {
@@ -55,6 +56,7 @@
                 <td width="80px"><?php echo ++$start ?></td>
                 <td><?php echo $file->judul ?></td>
                 <td><?php echo $file->nama_file ?></td>
+                <td><?php echo $file->link ?></td>
                 <td style="text-align:center" width="200px">
                     <?php
                     echo anchor(site_url('file/update/' . $file->id_file), 'Update');
