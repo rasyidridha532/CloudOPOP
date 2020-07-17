@@ -177,7 +177,6 @@ class File extends CI_Controller
     public function _rules()
     {
         $this->form_validation->set_rules('judul', 'judul', 'trim|required');
-        $this->form_validation->set_rules('nama_file', 'nama file', 'trim|required');
         $this->form_validation->set_rules();
 
         $this->form_validation->set_rules('id_file', 'id_file', 'trim');
