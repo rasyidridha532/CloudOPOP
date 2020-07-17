@@ -17,14 +17,6 @@ class File extends CI_Controller
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
 
-        if ($q <> '') {
-            $config['base_url'] = base_url() . 'file/index.html?q=' . urlencode($q);
-            $config['first_url'] = base_url() . 'file/index.html?q=' . urlencode($q);
-        } else {
-            $config['base_url'] = base_url() . 'file/index.html';
-            $config['first_url'] = base_url() . 'file/index.html';
-        }
-
         $config['per_page'] = 10;
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->File_model->total_rows($q);
@@ -33,24 +25,43 @@ class File extends CI_Controller
         $this->load->library('pagination');
         $this->pagination->initialize($config);
 
+        $fotoprofil = $this->session->userdata('gambar');
+        $nama = $this->session->userdata('nama');
+        $role = $this->session->userdata('role');
+
         $data = array(
             'file_data' => $file,
             'q' => $q,
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
             'start' => $start,
+            'foto' => $fotoprofil,
+            'nama' => $nama,
+            'role' => $role,
+            'title' => 'File'
         );
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar');
         $this->load->view('file/tbl_file_list', $data);
+        $this->load->view('template/footer');
     }
 
     public function create()
     {
+        $fotoprofil = $this->session->userdata('gambar');
+        $nama = $this->session->userdata('nama');
+        $role = $this->session->userdata('role');
+
         $data = array(
             'button' => 'Create',
             'action' => site_url('file/create_action'),
             'id_file' => set_value('id_file'),
             'judul' => set_value('judul'),
-            'nama_file' => set_value('nama_file')
+            'nama_file' => set_value('nama_file'),
+            'foto' => $fotoprofil,
+            'nama' => $nama,
+            'role' => $role,
+            'title' => 'Upload File'
         );
         $this->load->view('file/tbl_file_form', $data);
     }

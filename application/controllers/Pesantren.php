@@ -43,7 +43,7 @@ class Pesantren extends CI_Controller
 
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
-        $this->load->view('pesantren/list_pesantren');
+        $this->load->view('pesantren/list_pesantren', $data);
         $this->load->view('template/footer');
     }
 
