@@ -85,7 +85,6 @@ class File extends CI_Controller
         } else {
             $data = array(
                 'judul' => $this->input->post('judul', TRUE),
-                'nama_file' => $this->input->post('nama_file', TRUE),
             );
 
             $this->File_model->insert($data);
@@ -161,8 +160,8 @@ class File extends CI_Controller
         $this->load->library('upload', $config);
         if ($this->upload->do_upload('file')) {
             $fileData = $this->upload->data();
-            $uploadFile['name'] = $fileData['file_name'];
-            $uploadFile['desti'] = $fileData['upload_path'] . $fileData['filename'];
+            $uploadFile['nama_file'] = $fileData['file_name'];
+            $uploadFile['destination'] = $fileData['upload_path'] . $fileData['filename'];
             // return $this->upload->data('file_name');
         }
 
