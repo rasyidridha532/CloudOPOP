@@ -68,7 +68,6 @@
             </li>
             <!-- Menu Footer-->
             <li class="user-footer">
-              <a href="#" class="btn btn-default btn-flat">Profile</a>
               <a href="<?php echo site_url('auth/logout') ?>" class="btn btn-default btn-flat float-right">Sign out</a>
             </li>
           </ul>

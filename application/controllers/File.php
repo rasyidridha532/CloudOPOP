@@ -29,18 +29,21 @@ class File extends CI_Controller
         $nama = $this->session->userdata('nama');
         $role = $this->session->userdata('role');
 
+        $session = array(
+            'foto' => $fotoprofil,
+            'nama' => $nama,
+            'role' => $role
+        );
+
         $data = array(
             'file_data' => $file,
             'q' => $q,
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
             'start' => $start,
-            'foto' => $fotoprofil,
-            'nama' => $nama,
-            'role' => $role,
             'title' => 'File'
         );
-        $this->load->view('template/header', $data);
+        $this->load->view('template/header', $session);
         $this->load->view('template/sidebar');
         $this->load->view('file/tbl_file_list', $data);
         $this->load->view('template/footer');
@@ -52,17 +55,20 @@ class File extends CI_Controller
         $nama = $this->session->userdata('nama');
         $role = $this->session->userdata('role');
 
-        $data = array(
-            'action' => site_url('file/create_action'),
-            'id_file' => set_value('id_file'),
-            'judul' => set_value('judul'),
-            'nama_file' => set_value('nama_file'),
+        $session = array(
             'foto' => $fotoprofil,
             'nama' => $nama,
             'role' => $role,
+        );
+
+        $data = array(
+            'button' => 'Upload',
+            'action' => site_url('file/create_action'),
+            'id_file' => set_value('id_file'),
+            'judul' => set_value('judul'),
             'title' => 'Upload File'
         );
-        $this->load->view('template/header', $data);
+        $this->load->view('template/header', $session);
         $this->load->view('template/sidebar');
         $this->load->view('file/tbl_file_form', $data);
         $this->load->view('template/footer');
@@ -78,9 +84,8 @@ class File extends CI_Controller
             $data = array(
                 'judul' => $this->input->post('judul', TRUE),
                 'nama_file' => $this->input->post('nama_file', TRUE),
+                'destination' => $this->_upload_file()
             );
-
-
 
             $this->File_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -98,7 +103,7 @@ class File extends CI_Controller
                 'action' => site_url('file/update_action'),
                 'id_file' => set_value('id_file', $row->id_file),
                 'judul' => set_value('judul', $row->judul),
-                'nama_file' => set_value('nama_file', $row->nama_file),
+                'title' => 'Update File'
             );
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar');
@@ -140,6 +145,33 @@ class File extends CI_Controller
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('file'));
         }
+    }
+
+    private function _upload_file()
+    {
+        $uploadFile = [];
+
+        $config['upload_path'] = 'uploads/file/opop/';
+        $config['allowed_types'] = 'pdf|doc|docx|xls|xlsx|ppt|pptx';
+        $config['max_size'] = 0;
+        $config['file_name'] = 'file' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
+
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('file')) {
+            $fileData = $this->upload->data();
+            $desti = $fileData['upload_path'] . $fileData['filename'];
+
+            return $desti;
+            // return $this->upload->data('file_name');
+        }
+
+        // $this->upload->initialize($config);
+
+        // if (@$_FILES['file']['name'] != null) {
+        //     if ($this->upload->do_upload('file')) {
+        //         $post['file'] = $this->upload->data('file_name');
+        //     }
+        // }
     }
 
     public function _rules()

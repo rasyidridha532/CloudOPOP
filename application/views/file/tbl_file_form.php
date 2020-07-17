@@ -1,7 +1,7 @@
 <div class="content-wrapper">
     <div class="content-header">
         <div class="content-fluid">
-            <h2 style="margin-top:0px col-8">Upload FIle</h2>
+            <h2 style="margin-top:0px col-8">Upload File</h2>
             <div style="margin-bottom: 10px">
                 <div class="col-md-4 text-center">
                     <div style="margin-top: 8px" id="message alert alert-success">
@@ -18,12 +18,8 @@
                 <input type="text" class="form-control" name="judul" id="judul" placeholder="Judul" value="<?php echo $judul; ?>" />
             </div>
             <div class="form-group">
-                <label for="varchar">Nama File <?php echo form_error('nama_file') ?></label>
-                <input type="text" class="form-control" name="nama_file" id="nama_file" placeholder="Nama File" value="<?php echo $nama_file; ?>" />
-            </div>
-            <div class="form-group">
                 <label class="custom-file-label" for="File">Pilih File...</label>
-                <input type="file" class="custom-file-input" id="file" name="file">
+                <input type="file" class="custom-file-input" name="file">
             </div>
             <input type="hidden" name="id_file" value="<?php echo $id_file; ?>" />
             <button type="submit" class="btn btn-primary"><?php echo $button ?></button>

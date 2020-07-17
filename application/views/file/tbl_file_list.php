@@ -54,6 +54,8 @@
                                 <td><?php echo $file->nama_file ?></td>
                                 <td style="text-align:center" width="200px">
                                     <?php
+                                    echo anchor($file->destination, 'Download');
+                                    echo ' | ';
                                     echo anchor(site_url('file/update/' . $file->id_file), 'Update');
                                     echo ' | ';
                                     echo anchor(site_url('file/delete/' . $file->id_file), 'Delete', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
