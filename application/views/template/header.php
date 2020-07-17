@@ -62,7 +62,7 @@
               <img src="<?php echo base_url(); ?>assets/dist/img/<?= $foto; ?>" class="img-circle elevation-2" alt="User Image">
 
               <p>
-                <?= $nama; ?> - Web Developer
+                <?= $nama; ?>
                 <small><?= $role; ?></small>
               </p>
             </li>

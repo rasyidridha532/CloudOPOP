@@ -63,8 +63,6 @@
                                 <td><a href="<?= $pesantren->link_pesantren; ?>"><?= $pesantren->link_pesantren; ?></td>
                                 <td style="text-align:center" width="200px">
                                     <?php
-                                    echo anchor(site_url('pesantren/read/' . $pesantren->id_pesantren), 'Read');
-                                    echo ' | ';
                                     echo anchor(site_url('pesantren/update/' . $pesantren->id_pesantren), 'Update');
                                     echo ' | ';
                                     echo anchor(site_url('pesantren/delete/' . $pesantren->id_pesantren), 'Delete', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
