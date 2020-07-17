@@ -86,10 +86,10 @@ class File extends CI_Controller
             $data = array(
                 'judul' => $this->input->post('judul', TRUE),
                 'nama_file' => $this->input->post('nama_file', TRUE),
-                'destination' => $file['desti']
             );
 
             $this->File_model->insert($data);
+            $this->_upload_file();
             $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('file'));
         }
@@ -163,9 +163,11 @@ class File extends CI_Controller
             $fileData = $this->upload->data();
             $uploadFile['name'] = $fileData['file_name'];
             $uploadFile['desti'] = $fileData['upload_path'] . $fileData['filename'];
-
-            return $uploadFile;
             // return $this->upload->data('file_name');
+        }
+
+        if (!empty($uploadFile)) {
+            $insert = $this->file_model->insert_file($uploadFile);
         }
 
         // $this->upload->initialize($config);
