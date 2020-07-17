@@ -50,8 +50,7 @@ class File extends CI_Controller
             'action' => site_url('file/create_action'),
             'id_file' => set_value('id_file'),
             'judul' => set_value('judul'),
-            'nama_file' => set_value('nama_file'),
-            'link' => set_value('link'),
+            'nama_file' => set_value('nama_file')
         );
         $this->load->view('file/tbl_file_form', $data);
     }
@@ -66,7 +65,6 @@ class File extends CI_Controller
             $data = array(
                 'judul' => $this->input->post('judul', TRUE),
                 'nama_file' => $this->input->post('nama_file', TRUE),
-                'link' => $this->input->post('link', TRUE),
             );
 
             $this->File_model->insert($data);
@@ -86,7 +84,6 @@ class File extends CI_Controller
                 'id_file' => set_value('id_file', $row->id_file),
                 'judul' => set_value('judul', $row->judul),
                 'nama_file' => set_value('nama_file', $row->nama_file),
-                'link' => set_value('link', $row->link),
             );
             $this->load->view('file/tbl_file_form', $data);
         } else {
@@ -105,7 +102,6 @@ class File extends CI_Controller
             $data = array(
                 'judul' => $this->input->post('judul', TRUE),
                 'nama_file' => $this->input->post('nama_file', TRUE),
-                'link' => $this->input->post('link', TRUE),
             );
 
             $this->File_model->update($this->input->post('id_file', TRUE), $data);
@@ -132,7 +128,6 @@ class File extends CI_Controller
     {
         $this->form_validation->set_rules('judul', 'judul', 'trim|required');
         $this->form_validation->set_rules('nama_file', 'nama file', 'trim|required');
-        $this->form_validation->set_rules('link', 'link', 'trim|required');
 
         $this->form_validation->set_rules('id_file', 'id_file', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
