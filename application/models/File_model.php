@@ -35,7 +35,6 @@ class File_model extends CI_Model
         $this->db->like('id_file', $q);
         $this->db->or_like('judul', $q);
         $this->db->or_like('nama_file', $q);
-        $this->db->or_like('link', $q);
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
@@ -47,7 +46,6 @@ class File_model extends CI_Model
         $this->db->like('id_file', $q);
         $this->db->or_like('judul', $q);
         $this->db->or_like('nama_file', $q);
-        $this->db->or_like('link', $q);
         $this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
