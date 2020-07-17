@@ -59,7 +59,5 @@
             })
         })
     </script>
-    </body>
 </div>
-
-</html>
+</body>
