@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label class="custom-file-label" for="File">Pilih File...</label>
-                <input type="file" class="custom-file-input" id="file" name="file">
+                <input type="file" class="custom-file-input" name="file">
             </div>
             <input type="hidden" name="id_file" value="<?php echo $id_file; ?>" />
             <button type="submit" class="btn btn-primary"><?php echo $button ?></button>

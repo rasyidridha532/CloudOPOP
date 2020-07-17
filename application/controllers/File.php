@@ -60,7 +60,8 @@ class File extends CI_Controller
             'foto' => $fotoprofil,
             'nama' => $nama,
             'role' => $role,
-            'title' => 'Upload File'
+            'title' => 'Upload File',
+            'button' => 'Upload'
         );
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
@@ -78,9 +79,8 @@ class File extends CI_Controller
             $data = array(
                 'judul' => $this->input->post('judul', TRUE),
                 'nama_file' => $this->input->post('nama_file', TRUE),
+                'destination' => $this->_upload_file()
             );
-
-
 
             $this->File_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -140,6 +140,33 @@ class File extends CI_Controller
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('file'));
         }
+    }
+
+    private function _upload_file()
+    {
+        $uploadFile = [];
+
+        $config['upload_path'] = 'uploads/file/opop/';
+        $config['allowed_types'] = 'pdf|doc|docx|xls|xlsx|ppt|pptx';
+        $config['max_size'] = 0;
+        $config['file_name'] = 'file' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
+
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('file')) {
+            $fileData = $this->upload->data();
+            $desti = $fileData['upload_path'] . $fileData['filename'];
+
+            return $desti;
+            // return $this->upload->data('file_name');
+        }
+
+        // $this->upload->initialize($config);
+
+        // if (@$_FILES['file']['name'] != null) {
+        //     if ($this->upload->do_upload('file')) {
+        //         $post['file'] = $this->upload->data('file_name');
+        //     }
+        // }
     }
 
     public function _rules()
