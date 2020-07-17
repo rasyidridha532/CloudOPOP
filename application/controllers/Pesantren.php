@@ -143,6 +143,7 @@ class Pesantren extends CI_Controller
             $data = array(
                 'button' => 'Update',
                 'action' => site_url('pesantren/update_action'),
+                'kabupaten' => $this->Pesantren_model->get_kabupaten()->result(),
                 'id_pesantren' => set_value('id_pesantren', $row->id_pesantren),
                 'nama_pesantren' => set_value('nama_pesantren', $row->nama_pesantren),
                 'alamat' => set_value('alamat', $row->alamat),
