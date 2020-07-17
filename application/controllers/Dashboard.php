@@ -36,11 +36,8 @@ class Dashboard extends CI_Controller
 		$nama = $this->session->userdata('nama');
 		$role = $this->session->userdata('role');
 
-		$cekUser = $this->db->count_all('tbl_users');
-
 		$hitungSemuaPesantren = $this->db->count_all('tbl_pesantren');
 
-		$user['countUser'] = $cekUser;
 		$user['hitungPesantren'] = $hitungSemuaPesantren;
 
 		$data = array(

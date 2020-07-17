@@ -106,8 +106,6 @@ class Pesantren extends CI_Controller
         }
 
         echo $option;
-
-        // $this->output->set_content_type('application/json')->set_output(json_encode($data));
     }
 
     public function create_action()
