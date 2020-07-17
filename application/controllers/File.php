@@ -29,18 +29,21 @@ class File extends CI_Controller
         $nama = $this->session->userdata('nama');
         $role = $this->session->userdata('role');
 
+        $session = array(
+            'foto' => $fotoprofil,
+            'nama' => $nama,
+            'role' => $role
+        );
+
         $data = array(
             'file_data' => $file,
             'q' => $q,
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
             'start' => $start,
-            'foto' => $fotoprofil,
-            'nama' => $nama,
-            'role' => $role,
             'title' => 'File'
         );
-        $this->load->view('template/header', $data);
+        $this->load->view('template/header', $session);
         $this->load->view('template/sidebar');
         $this->load->view('file/tbl_file_list', $data);
         $this->load->view('template/footer');
@@ -52,18 +55,20 @@ class File extends CI_Controller
         $nama = $this->session->userdata('nama');
         $role = $this->session->userdata('role');
 
-        $data = array(
-            'action' => site_url('file/create_action'),
-            'id_file' => set_value('id_file'),
-            'judul' => set_value('judul'),
-            'nama_file' => set_value('nama_file'),
+        $session = array(
             'foto' => $fotoprofil,
             'nama' => $nama,
             'role' => $role,
-            'title' => 'Upload File',
-            'button' => 'Upload'
         );
-        $this->load->view('template/header', $data);
+
+        $data = array(
+            'button' => 'Upload',
+            'action' => site_url('file/create_action'),
+            'id_file' => set_value('id_file'),
+            'judul' => set_value('judul'),
+            'title' => 'Upload File'
+        );
+        $this->load->view('template/header', $session);
         $this->load->view('template/sidebar');
         $this->load->view('file/tbl_file_form', $data);
         $this->load->view('template/footer');
@@ -98,7 +103,7 @@ class File extends CI_Controller
                 'action' => site_url('file/update_action'),
                 'id_file' => set_value('id_file', $row->id_file),
                 'judul' => set_value('judul', $row->judul),
-                'nama_file' => set_value('nama_file', $row->nama_file),
+                'title' => 'Update File'
             );
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar');
