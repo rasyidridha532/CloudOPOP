@@ -105,7 +105,7 @@ class Pesantren extends CI_Controller
             );
 
             $this->Pesantren_model->insert($data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success">Create Record Success</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Data Berhasil Ditambah!</div>');
             redirect(site_url('pesantren'));
         }
     }
@@ -139,7 +139,7 @@ class Pesantren extends CI_Controller
             $this->load->view('pesantren/form_pesantren', $data);
             $this->load->view('template/footer');
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', '<div class="alert alert-failed">Data tidak ditemukan!</div>');
             redirect(site_url('pesantren'));
         }
     }
@@ -160,7 +160,7 @@ class Pesantren extends CI_Controller
             );
 
             $this->Pesantren_model->update($this->input->post('id_pesantren', TRUE), $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success">Update Record Success</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Data Berhasil Dirubah!</div>');
             redirect(site_url('pesantren'));
         }
     }
@@ -171,21 +171,31 @@ class Pesantren extends CI_Controller
 
         if ($row) {
             $this->Pesantren_model->delete($id);
-            $this->session->set_flashdata('message', '<div class="alert alert-success">Delete Record Success</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Data Berhasil Dihapus!</div>');
             redirect(site_url('pesantren'));
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', '<div class="alert alert-failed">Data tidak ditemukan!</div>');
             redirect(site_url('pesantren'));
         }
     }
 
     public function _rules()
     {
-        $this->form_validation->set_rules('nama_pesantren', 'nama pesantren', 'trim|required');
-        $this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
-        $this->form_validation->set_rules('id_kabupaten', 'id kabupaten', 'trim|required');
-        $this->form_validation->set_rules('id_kecamatan', 'id kecamatan', 'trim|required');
-        $this->form_validation->set_rules('link_pesantren', 'link_pesantren', 'trim|required');
+        $this->form_validation->set_rules('nama_pesantren', 'nama pesantren', 'trim|required', [
+            'required' => 'Nama Pesantren Harus Diisi!'
+        ]);
+        $this->form_validation->set_rules('alamat', 'alamat', 'trim|required', [
+            'required' => 'Alamat Harus Diisi!'
+        ]);
+        $this->form_validation->set_rules('id_kabupaten', 'id kabupaten', 'trim|required', [
+            'required' => 'Kabupaten Harus Dipilih!'
+        ]);
+        $this->form_validation->set_rules('id_kecamatan', 'id kecamatan', 'trim|required', [
+            'required' => 'Kecamatan Harus Dipilih!'
+        ]);
+        $this->form_validation->set_rules('link_pesantren', 'link_pesantren', 'trim|required', [
+            'required' => 'Link Pesantren Harus Diisi!'
+        ]);
 
         $this->form_validation->set_rules('id_pesantren', 'id_pesantren', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

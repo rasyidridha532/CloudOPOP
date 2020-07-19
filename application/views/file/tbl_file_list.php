@@ -42,16 +42,20 @@
                                 <th>No</th>
                                 <th>Judul</th>
                                 <th>Nama File</th>
+                                <th>Tanggal Upload</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <?php
                         foreach ($file_data as $file) {
+                            $tanggal = $file->created_at;
+                            $newDate = date("d-m-Y HH:MM:DD", strtotime($tanggal));
                         ?>
                             <tr>
                                 <td width="80px"><?php echo ++$start ?></td>
                                 <td><?php echo $file->judul ?></td>
                                 <td><?php echo $file->nama_file ?></td>
+                                <td><?php echo $newDate ?></td>
                                 <td style="text-align:center" width="200px">
                                     <?php
                                     echo anchor(base_url('uploads/file/opop/' . $file->nama_file), 'Download');

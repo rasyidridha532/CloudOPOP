@@ -81,7 +81,6 @@ class File extends CI_Controller
 
             $this->File_model->insert($data);
             $this->_upload_file();
-            // $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('file'));
         }
     }
@@ -93,7 +92,7 @@ class File extends CI_Controller
         if ($row) {
             $data = array(
                 'button' => 'Update',
-                'action' => site_url('file/update_action'),
+                'action' => site_url('file/update_action/' . $row->id_file),
                 'id_file' => set_value('id_file', $row->id_file),
                 'judul' => set_value('judul', $row->judul),
                 'title' => 'Update File'
@@ -103,25 +102,28 @@ class File extends CI_Controller
             $this->load->view('file/tbl_file_form', $data);
             $this->load->view('template/footer');
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Record Not Found</div>');
             redirect(site_url('file'));
         }
     }
 
-    public function update_action()
+    public function update_action($id)
     {
+        $row = $this->File_model->get_by_id($id);
+        $filename = $row->nama_file;
+
         $this->_rules();
 
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id_file', TRUE));
         } else {
             $data = array(
-                'judul' => $this->input->post('judul', TRUE),
-                'nama_file' => $this->input->post('nama_file', TRUE),
+                'judul' => $this->input->post('judul', TRUE)
             );
 
+            delete_files('uploads/file/opop/' . $filename);
             $this->File_model->update($this->input->post('id_file', TRUE), $data);
-            $this->session->set_flashdata('message', 'Update Record Success');
+            $this->_upload_file();
             redirect(site_url('file'));
         }
     }
@@ -132,10 +134,11 @@ class File extends CI_Controller
 
         if ($row) {
             $this->File_model->delete($id);
-            $this->session->set_flashdata('message', 'Delete Record Success');
+            delete_files('uploads/file/opop/' . $row->nama_file);
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Delete Record Success</div>');
             redirect(site_url('file'));
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', '<div class="alert alert-failed">Record Not Found</div');
             redirect(site_url('file'));
         }
     }
@@ -151,14 +154,16 @@ class File extends CI_Controller
 
         $this->load->library('upload', $config);
 
-        if ($this->upload->do_upload('file')) {
+        if (!$this->upload->do_upload('file')) {
+            $this->session->set_flashdata('message', '<div class="alert alert-failed">File tidak support!</div>');
+        } else {
             $fileData = $this->upload->data();
             $uploadFile['nama_file'] = $fileData['file_name'];
-            // return $this->upload->data('file_name');
         }
 
         if (!empty($uploadFile)) {
             $this->File_model->insert_file($uploadFile);
+            $this->session->set_flashdata('message', '<div class="alert alert-success">File berhasil diupload!</div>');
         }
 
         // $this->upload->initialize($config);
@@ -172,7 +177,9 @@ class File extends CI_Controller
 
     public function _rules()
     {
-        $this->form_validation->set_rules('judul', 'judul', 'trim|required');
+        $this->form_validation->set_rules('judul', 'judul', 'trim|required', [
+            'required' => 'Nama File Harus Diisi!'
+        ]);
 
         $this->form_validation->set_rules('id_file', 'id_file', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
