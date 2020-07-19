@@ -29,10 +29,11 @@ class File extends CI_Controller
         $nama = $this->session->userdata('nama');
         $role = $this->session->userdata('role');
 
-        $session = array(
+        $sesi = array(
             'foto' => $fotoprofil,
             'nama' => $nama,
-            'role' => $role
+            'role' => $role,
+            'title' => 'File'
         );
 
         $data = array(
@@ -41,9 +42,8 @@ class File extends CI_Controller
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
             'start' => $start,
-            'title' => 'File'
         );
-        $this->load->view('template/header', $session);
+        $this->load->view('template/header', $sesi);
         $this->load->view('template/sidebar');
         $this->load->view('file/tbl_file_list', $data);
         $this->load->view('template/footer');
@@ -78,7 +78,7 @@ class File extends CI_Controller
     {
         $this->_rules();
 
-        $file[] = $this->_upload_file();
+        $file = $this->_upload_file();
 
         if ($this->form_validation->run() == FALSE) {
             $this->create();
@@ -89,7 +89,7 @@ class File extends CI_Controller
 
             $this->File_model->insert($data);
             $this->_upload_file();
-            $this->session->set_flashdata('message', 'Create Record Success');
+            // $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('file'));
         }
     }
@@ -158,6 +158,7 @@ class File extends CI_Controller
         $config['file_name'] = 'file' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
 
         $this->load->library('upload', $config);
+        $this->upload->initialize($config);
         if ($this->upload->do_upload('file')) {
             $fileData = $this->upload->data();
             $uploadFile['nama_file'] = $fileData['file_name'];
@@ -167,6 +168,8 @@ class File extends CI_Controller
 
         if (!empty($uploadFile)) {
             $insert = $this->file_model->insert_file($uploadFile);
+            $statusMsg = $insert ? 'Files uploaded successfully.' : 'Some problem occurred, please try again.';
+            $this->session->set_flashdata('message', $statusMsg);
         }
 
         // $this->upload->initialize($config);
