@@ -102,13 +102,14 @@ class File extends CI_Controller
     {
         $this->_rules();
 
-        $file_spec = $this->_upload_file();
-        $nama_file = $file_spec['namafile'];
-        $size = $file_spec['size'];
+
 
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
+            $file_spec = $this->_upload_file();
+            $nama_file = $file_spec['namafile'];
+            $size = $file_spec['size'];
             $data = array(
                 'judul' => $this->input->post('judul', TRUE),
                 'nama_file' => $nama_file,
@@ -128,13 +129,13 @@ class File extends CI_Controller
         $row = $this->File_model->get_by_id($id);
         $old_file = $row->nama_file;
 
-        $filename = $this->_upload_file();
-        $nama_file = $filename['namafile'];
-        $size = $filename['size'];
-
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id_file', TRUE));
         } else {
+            $filename = $this->_upload_file();
+            $nama_file = $filename['namafile'];
+            $size = $filename['size'];
+
             $data = array(
                 'judul' => $this->input->post('judul', TRUE),
                 'nama_file' => $nama_file,
@@ -178,22 +179,12 @@ class File extends CI_Controller
         } else {
             $fileData = $this->upload->data();
             $uploadFile['namafile'] = $fileData['file_name'];
-            $uploadFile['size'] = $fileData['size'];
+            $uploadFile['size'] = $fileData['file_size'];
         }
 
         if (!empty($uploadFile)) {
             return $uploadFile;
-            // $this->File_model->insert_file($uploadFile);
-            // $this->session->set_flashdata('message', '<div class="alert alert-success">File berhasil diupload!</div>');
         }
-
-        // $this->upload->initialize($config);
-
-        // if (@$_FILES['file']['name'] != null) {
-        //     if ($this->upload->do_upload('file')) {
-        //         $post['file'] = $this->upload->data('file_name');
-        //     }
-        // }
     }
 
     public function _rules()
