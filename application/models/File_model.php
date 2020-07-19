@@ -56,10 +56,10 @@ class File_model extends CI_Model
         $this->db->insert($this->table, $data);
     }
 
-    function insert_file($data = array())
+    function insert_file($data)
     {
-        $insert = $this->db->insert_batch('tbl_file', $data);
-        return $insert ? true : false;
+        $insert = $this->db->insert('tbl_file', $data);
+        return $insert;
     }
 
     // update data
