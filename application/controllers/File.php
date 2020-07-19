@@ -72,15 +72,18 @@ class File extends CI_Controller
     {
         $this->_rules();
 
+        $nama_file = $this->_upload_file();
+
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
             $data = array(
                 'judul' => $this->input->post('judul', TRUE),
+                'nama_file' => $nama_file
             );
 
             $this->File_model->insert($data);
-            $this->_upload_file();
+            $this->session->set_flashdata('message', '<div class="alert alert-success">File berhasil diupload!</div>');
             redirect(site_url('file'));
         }
     }
@@ -150,7 +153,7 @@ class File extends CI_Controller
         $config['upload_path'] = './uploads/file/opop/';
         $config['allowed_types'] = 'pdf|doc|docx|xls|xlsx|ppt|pptx';
         $config['max_size'] = 0;
-        $config['file_name'] = 'file' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
+        $config['file_name'] = 'file' . date('dmy') . '-' . substr(md5(rand()), 0, 10);
 
         $this->load->library('upload', $config);
 
@@ -162,8 +165,9 @@ class File extends CI_Controller
         }
 
         if (!empty($uploadFile)) {
-            $this->File_model->insert_file($uploadFile);
-            $this->session->set_flashdata('message', '<div class="alert alert-success">File berhasil diupload!</div>');
+            return $config['filename'];
+            // $this->File_model->insert_file($uploadFile);
+            // $this->session->set_flashdata('message', '<div class="alert alert-success">File berhasil diupload!</div>');
         }
 
         // $this->upload->initialize($config);
