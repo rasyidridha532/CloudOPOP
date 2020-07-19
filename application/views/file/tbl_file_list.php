@@ -48,7 +48,7 @@
                         </thead>
                         <?php
                         foreach ($file_data as $file) {
-                            $tanggal = $file->created_at;
+                            $tanggal = $file->uploaded_at;
                             $newDate = date("d-m-Y HH:MM:DD", strtotime($tanggal));
                         ?>
                             <tr>
