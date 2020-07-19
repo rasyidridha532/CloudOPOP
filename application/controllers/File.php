@@ -90,11 +90,19 @@ class File extends CI_Controller
 
     public function update($id)
     {
+
+        $fotoprofil = $this->session->userdata('gambar');
+        $nama = $this->session->userdata('nama');
+        $role = $this->session->userdata('role');
+
         $row = $this->File_model->get_by_id($id);
 
         if ($row) {
             $data = array(
                 'button' => 'Update',
+                'foto' => $fotoprofil,
+                'nama' => $nama,
+                'role' => $role,
                 'action' => site_url('file/update_action/' . $row->id_file),
                 'id_file' => set_value('id_file', $row->id_file),
                 'judul' => set_value('judul', $row->judul),
@@ -121,7 +129,8 @@ class File extends CI_Controller
             $this->update($this->input->post('id_file', TRUE));
         } else {
             $data = array(
-                'judul' => $this->input->post('judul', TRUE)
+                'judul' => $this->input->post('judul', TRUE),
+                'nama_file' => $filename
             );
 
             unlink('./uploads/file/opop/' . $filename);
