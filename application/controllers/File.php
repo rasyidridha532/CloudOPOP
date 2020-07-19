@@ -158,7 +158,7 @@ class File extends CI_Controller
         }
 
         if (!empty($uploadFile)) {
-            $this->file_model->insert_file($uploadFile);
+            $this->File_model->insert_file($uploadFile);
         }
 
         // $this->upload->initialize($config);
