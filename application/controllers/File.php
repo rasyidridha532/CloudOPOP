@@ -42,7 +42,7 @@ class File extends CI_Controller
         );
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
-        $this->load->view('file/tbl_file_list', $data);
+        $this->load->view('file/list_file', $data);
         $this->load->view('template/footer');
     }
 
@@ -64,7 +64,7 @@ class File extends CI_Controller
         );
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
-        $this->load->view('file/tbl_file_form', $data);
+        $this->load->view('file/form_file', $data);
         $this->load->view('template/footer');
     }
 
@@ -90,7 +90,7 @@ class File extends CI_Controller
             );
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar');
-            $this->load->view('file/tbl_file_form', $data);
+            $this->load->view('file/file_form', $data);
             $this->load->view('template/footer');
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-success">File Tidak Ditemukan!</div>');

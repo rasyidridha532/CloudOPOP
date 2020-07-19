@@ -68,12 +68,11 @@
                                     ?></td>
                                 <td><?php echo $newDate ?></td>
                                 <td style="text-align:center" width="200px">
+                                    <button class="btn btn-block btn-primary"><a href="<?= base_url('uploads/file/opop/' . $file->nama_file); ?>"></a>Download</button>
+                                    <button class="btn btn-block btn-primary"><a href="<?= site_url('file/update/' . $file->id_file); ?>"></a>Update</button>
+                                    <button class="btn btn-block btn-danger"><a href="<?= site_url('file/delete/' . $file->id_file); ?>" onclick="javasciprt: return confirm(\'Are You Sure ?\')"></a>Update</button>
                                     <?php
-                                    echo anchor(base_url('uploads/file/opop/' . $file->nama_file), 'Download');
-                                    echo ' | ';
-                                    echo anchor(site_url('file/update/' . $file->id_file), 'Update');
-                                    echo ' | ';
-                                    echo anchor(site_url('file/delete/' . $file->id_file), 'Delete', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+                                    // echo anchor(site_url('file/delete/' . $file->id_file), 'Delete', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
                                     ?>
                                 </td>
                             </tr>
