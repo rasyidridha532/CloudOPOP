@@ -29,19 +29,16 @@ class File extends CI_Controller
         $nama = $this->session->userdata('nama');
         $role = $this->session->userdata('role');
 
-        $sesi = array(
-            'foto' => $fotoprofil,
-            'nama' => $nama,
-            'role' => $role,
-            'title' => 'File'
-        );
-
         $data = array(
             'file_data' => $file,
             'q' => $q,
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
             'start' => $start,
+            'foto' => $fotoprofil,
+            'nama' => $nama,
+            'role' => $role,
+            'title' => 'File'
         );
         $this->load->view('template/header', $sesi);
         $this->load->view('template/sidebar');
