@@ -62,11 +62,8 @@
                                 <td><?php echo $pesantren->nama_kecamatan ?></td>
                                 <td><a href="<?= $pesantren->link_pesantren; ?>"><?= $pesantren->link_pesantren; ?></td>
                                 <td style="text-align:center" width="200px">
-                                    <?php
-                                    echo anchor(site_url('pesantren/update/' . $pesantren->id_pesantren), 'Update');
-                                    echo ' | ';
-                                    echo anchor(site_url('pesantren/delete/' . $pesantren->id_pesantren), 'Delete', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
-                                    ?>
+                                    <a href="<?= site_url('pesantren/update/' . $pesantren->id_pesantren); ?>" class="btn btn-block btn-warning btn-sm">Update</a>
+                                    <a href="<?= site_url('pesantren/delete/' . $pesantren->id_pesantren); ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus ?')" class="btn btn-block btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                         <?php
