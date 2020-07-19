@@ -49,7 +49,7 @@
                         <?php
                         foreach ($file_data as $file) {
                             $tanggal = $file->uploaded_at;
-                            $newDate = date("d-m-Y HH:MM:DD", strtotime($tanggal));
+                            $newDate = date("d-m-Y H:i:s", strtotime($tanggal));
                         ?>
                             <tr>
                                 <td width="80px"><?php echo ++$start ?></td>
