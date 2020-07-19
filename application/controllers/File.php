@@ -70,7 +70,6 @@ class File extends CI_Controller
 
     public function update($id)
     {
-
         $fotoprofil = $this->session->userdata('gambar');
         $nama = $this->session->userdata('nama');
         $role = $this->session->userdata('role');
@@ -90,7 +89,7 @@ class File extends CI_Controller
             );
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar');
-            $this->load->view('file/file_form', $data);
+            $this->load->view('file/form_file', $data);
             $this->load->view('template/footer');
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-success">File Tidak Ditemukan!</div>');
@@ -101,8 +100,6 @@ class File extends CI_Controller
     public function create_action()
     {
         $this->_rules();
-
-
 
         if ($this->form_validation->run() == FALSE) {
             $this->create();
