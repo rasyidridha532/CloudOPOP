@@ -12,19 +12,20 @@
         </div>
     </div>
     <div class="container-fluid">
-        <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="varchar">Judul <?php echo form_error('judul') ?></label>
-                <input type="text" class="form-control" name="judul" id="judul" placeholder="Judul" value="<?php echo $judul; ?>" />
-            </div>
-            <div class="form-group">
-                <label class="col-md-2 control-label" for="File">Pilih File...</label>
-                <input type="file" name="file" class="form-control">
-            </div>
-            <input type="hidden" name="id_file" value="<?php echo $id_file; ?>" />
-            <button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-            <a href="<?php echo site_url('file') ?>" class="btn btn-default">Cancel</a>
-        </form>
+        <!-- <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data"> -->
+        <?= form_open_multipart($action) ?>
+        <div class="form-group">
+            <label for="varchar">Judul <?php echo form_error('judul') ?></label>
+            <input type="text" class="form-control" name="judul" id="judul" placeholder="Judul" value="<?php echo $judul; ?>" />
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="File">Pilih File...</label>
+            <input type="file" name="file" class="form-control">
+        </div>
+        <input type="hidden" name="id_file" value="<?php echo $id_file; ?>" />
+        <button type="submit" class="btn btn-primary"><?php echo $button ?></button>
+        <a href="<?php echo site_url('file') ?>" class="btn btn-default">Cancel</a>
+        <?= form_close() ?>
     </div>
 </div>
 </body>

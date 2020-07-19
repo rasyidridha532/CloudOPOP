@@ -72,8 +72,6 @@ class File extends CI_Controller
     {
         $this->_rules();
 
-        $file = $this->_upload_file();
-
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
@@ -146,17 +144,16 @@ class File extends CI_Controller
     {
         $uploadFile = [];
 
-        $config['upload_path'] = 'uploads/file/opop/';
+        $config['upload_path'] = './uploads/file/opop/';
         $config['allowed_types'] = 'pdf|doc|docx|xls|xlsx|ppt|pptx';
         $config['max_size'] = 0;
         $config['file_name'] = 'file' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
 
         $this->load->library('upload', $config);
-        $this->upload->initialize($config);
+
         if ($this->upload->do_upload('file')) {
             $fileData = $this->upload->data();
             $uploadFile['nama_file'] = $fileData['file_name'];
-            $uploadFile['destination'] = $fileData['upload_path'] . $fileData['filename'];
             // return $this->upload->data('file_name');
         }
 
