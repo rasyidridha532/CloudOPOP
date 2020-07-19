@@ -54,7 +54,7 @@
                                 <td><?php echo $file->nama_file ?></td>
                                 <td style="text-align:center" width="200px">
                                     <?php
-                                    echo anchor($file->destination, 'Download');
+                                    echo anchor(base_url('uploads/file/opop/' . $file->nama_file), 'Download');
                                     echo ' | ';
                                     echo anchor(site_url('file/update/' . $file->id_file), 'Update');
                                     echo ' | ';
