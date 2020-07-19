@@ -42,6 +42,7 @@
                                 <th>No</th>
                                 <th>Judul</th>
                                 <th>Nama File</th>
+                                <th>Ukuran File</th>
                                 <th>Tanggal Upload</th>
                                 <th>Action</th>
                             </tr>
@@ -55,6 +56,7 @@
                                 <td width="80px"><?php echo ++$start ?></td>
                                 <td><?php echo $file->judul ?></td>
                                 <td><?php echo $file->nama_file ?></td>
+                                <td><?php echo $file->size ?></td>
                                 <td><?php echo $newDate ?></td>
                                 <td style="text-align:center" width="200px">
                                     <?php

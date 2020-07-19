@@ -102,14 +102,17 @@ class File extends CI_Controller
     {
         $this->_rules();
 
-        $nama_file = $this->_upload_file();
+        $file_spec = $this->_upload_file();
+        $nama_file = $file_spec['namafile'];
+        $size = $file_spec['size'];
 
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
             $data = array(
                 'judul' => $this->input->post('judul', TRUE),
-                'nama_file' => $nama_file
+                'nama_file' => $nama_file,
+                'size' => $size
             );
 
             $this->File_model->insert($data);
@@ -126,13 +129,16 @@ class File extends CI_Controller
         $old_file = $row->nama_file;
 
         $filename = $this->_upload_file();
+        $nama_file = $filename['namafile'];
+        $size = $filename['size'];
 
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id_file', TRUE));
         } else {
             $data = array(
                 'judul' => $this->input->post('judul', TRUE),
-                'nama_file' => $filename
+                'nama_file' => $nama_file,
+                'size' => $size
             );
 
             unlink('./uploads/file/opop/' . $old_file);
@@ -171,7 +177,8 @@ class File extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-failed">File tidak support!</div>');
         } else {
             $fileData = $this->upload->data();
-            $uploadFile = $fileData['file_name'];
+            $uploadFile['namafile'] = $fileData['file_name'];
+            $uploadFile['size'] = $fileData['size'];
         }
 
         if (!empty($uploadFile)) {
