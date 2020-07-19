@@ -68,26 +68,6 @@ class File extends CI_Controller
         $this->load->view('template/footer');
     }
 
-    public function create_action()
-    {
-        $this->_rules();
-
-        $nama_file = $this->_upload_file();
-
-        if ($this->form_validation->run() == FALSE) {
-            $this->create();
-        } else {
-            $data = array(
-                'judul' => $this->input->post('judul', TRUE),
-                'nama_file' => $nama_file
-            );
-
-            $this->File_model->insert($data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success">File berhasil diupload!</div>');
-            redirect(site_url('file'));
-        }
-    }
-
     public function update($id)
     {
 
@@ -118,12 +98,34 @@ class File extends CI_Controller
         }
     }
 
+    public function create_action()
+    {
+        $this->_rules();
+
+        $nama_file = $this->_upload_file();
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->create();
+        } else {
+            $data = array(
+                'judul' => $this->input->post('judul', TRUE),
+                'nama_file' => $nama_file
+            );
+
+            $this->File_model->insert($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success">File berhasil diupload!</div>');
+            redirect(site_url('file'));
+        }
+    }
+
     public function update_action($id)
     {
-        $row = $this->File_model->get_by_id($id);
-        $filename = $row->nama_file;
-
         $this->_rules();
+
+        $row = $this->File_model->get_by_id($id);
+        $old_file = $row->nama_file;
+
+        $filename = $this->_upload_file();
 
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id_file', TRUE));
@@ -133,9 +135,8 @@ class File extends CI_Controller
                 'nama_file' => $filename
             );
 
-            unlink('./uploads/file/opop/' . $filename);
+            unlink('./uploads/file/opop/' . $old_file);
             $this->File_model->update($this->input->post('id_file', TRUE), $data);
-            $this->_upload_file();
             redirect(site_url('file'));
         }
     }
