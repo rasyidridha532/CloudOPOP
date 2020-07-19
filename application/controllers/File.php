@@ -124,7 +124,7 @@ class File extends CI_Controller
                 'judul' => $this->input->post('judul', TRUE)
             );
 
-            delete_files('./uploads/file/opop/' . $filename);
+            unlink('./uploads/file/opop/' . $filename);
             $this->File_model->update($this->input->post('id_file', TRUE), $data);
             $this->_upload_file();
             redirect(site_url('file'));
