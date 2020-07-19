@@ -93,7 +93,7 @@ class File extends CI_Controller
             $this->load->view('file/tbl_file_form', $data);
             $this->load->view('template/footer');
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-success">Record Not Found</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success">File Tidak Ditemukan!</div>');
             redirect(site_url('file'));
         }
     }
@@ -148,10 +148,10 @@ class File extends CI_Controller
         if ($row) {
             $this->File_model->delete($id);
             unlink('./uploads/file/opop/' . $row->nama_file);
-            $this->session->set_flashdata('message', '<div class="alert alert-success">Delete Record Success</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success">File Berhasil Dihapus!</div>');
             redirect(site_url('file'));
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-failed">Record Not Found</div');
+            $this->session->set_flashdata('message', '<div class="alert alert-failed">Data Tidak Ditemukan!</div');
             redirect(site_url('file'));
         }
     }
@@ -163,7 +163,7 @@ class File extends CI_Controller
         $config['upload_path'] = './uploads/file/opop/';
         $config['allowed_types'] = 'pdf|doc|docx|xls|xlsx|ppt|pptx';
         $config['max_size'] = 0;
-        $config['file_name'] = 'file' . date('dmy') . '-' . substr(md5(rand()), 0, 10);
+        $config['file_name'] = 'OPOP-' . date('dmy') . '-' . substr(md5(rand()), 0, 10);
 
         $this->load->library('upload', $config);
 
