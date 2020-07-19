@@ -51,12 +51,20 @@
                         foreach ($file_data as $file) {
                             $tanggal = $file->uploaded_at;
                             $newDate = date("d-m-Y H:i:s", strtotime($tanggal));
+
+                            $size_file = $file->size;
                         ?>
                             <tr>
                                 <td width="80px"><?php echo ++$start ?></td>
                                 <td><?php echo $file->judul ?></td>
                                 <td><?php echo $file->nama_file ?></td>
-                                <td><?php echo $file->size ?></td>
+                                <td><?php if ($size_file <= 1024) {
+                                        echo $size_file . ' KB'; ?>
+                                    <?php
+                                    } else if ($size_file >= 1024) {
+                                        echo $size_file . ' MB';
+                                    }
+                                    ?></td>
                                 <td><?php echo $newDate ?></td>
                                 <td style="text-align:center" width="200px">
                                     <?php
