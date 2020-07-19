@@ -124,7 +124,7 @@ class File extends CI_Controller
                 'judul' => $this->input->post('judul', TRUE)
             );
 
-            delete_files('uploads/file/opop/' . $filename);
+            delete_files('./uploads/file/opop/' . $filename);
             $this->File_model->update($this->input->post('id_file', TRUE), $data);
             $this->_upload_file();
             redirect(site_url('file'));
@@ -137,7 +137,7 @@ class File extends CI_Controller
 
         if ($row) {
             $this->File_model->delete($id);
-            delete_files('uploads/file/opop/' . $row->nama_file);
+            delete_files('./uploads/file/opop/' . $row->nama_file);
             $this->session->set_flashdata('message', '<div class="alert alert-success">Delete Record Success</div>');
             redirect(site_url('file'));
         } else {
