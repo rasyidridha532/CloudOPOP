@@ -58,10 +58,11 @@
                                 <td width="80px"><?php echo ++$start ?></td>
                                 <td><?php echo $file->judul ?></td>
                                 <td><?php echo $file->nama_file ?></td>
-                                <td><?php if ($size_file <= 1024) {
+                                <td><?php if ($size_file <= 1000) {
                                         echo $size_file . ' KB'; ?>
                                     <?php
-                                    } else if ($size_file >= 1024) {
+                                    } else if ($size_file >= 1000) {
+                                        $size_file = $size_file / 1000;
                                         echo $size_file . ' MB';
                                     }
                                     ?></td>
