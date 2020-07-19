@@ -63,7 +63,7 @@
                                     <?php
                                     } else if ($size_file >= 1000) {
                                         $size_file = $size_file / 1000;
-                                        echo $size_file . ' MB';
+                                        echo round($size_file, 2) . ' MB';
                                     }
                                     ?></td>
                                 <td><?php echo $newDate ?></td>
