@@ -137,7 +137,7 @@ class File extends CI_Controller
 
         if ($row) {
             $this->File_model->delete($id);
-            delete_files('./uploads/file/opop/' . $row->nama_file);
+            unlink('./uploads/file/opop/' . $row->nama_file);
             $this->session->set_flashdata('message', '<div class="alert alert-success">Delete Record Success</div>');
             redirect(site_url('file'));
         } else {
