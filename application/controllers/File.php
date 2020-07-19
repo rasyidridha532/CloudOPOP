@@ -40,7 +40,7 @@ class File extends CI_Controller
             'role' => $role,
             'title' => 'File'
         );
-        $this->load->view('template/header', $sesi);
+        $this->load->view('template/header', $$data);
         $this->load->view('template/sidebar');
         $this->load->view('file/tbl_file_list', $data);
         $this->load->view('template/footer');
