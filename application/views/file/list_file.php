@@ -67,7 +67,7 @@
                                     }
                                     ?></td>
                                 <td><?php echo $newDate ?></td>
-                                <td class="side-by-side">
+                                <td class="margin">
                                     <a href="<?= base_url('uploads/file/opop/' . $file->nama_file); ?>" class="btn btn-block btn-primary btn-sm">Download</a>
                                     <a href="<?= site_url('file/update/' . $file->id_file); ?>" class="btn btn-block btn-warning btn-sm">Update</a>
                                     <a href="<?= site_url('file/delete/' . $file->id_file); ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus ?')" class="btn btn-block btn-danger btn-sm">Delete</a>
