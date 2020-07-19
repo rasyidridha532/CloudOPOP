@@ -161,11 +161,11 @@ class File extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-failed">File tidak support!</div>');
         } else {
             $fileData = $this->upload->data();
-            $uploadFile['nama_file'] = $fileData['file_name'];
+            $uploadFile = $fileData['file_name'];
         }
 
         if (!empty($uploadFile)) {
-            return $config['filename'];
+            return $uploadFile;
             // $this->File_model->insert_file($uploadFile);
             // $this->session->set_flashdata('message', '<div class="alert alert-success">File berhasil diupload!</div>');
         }
