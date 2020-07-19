@@ -68,12 +68,9 @@
                                     ?></td>
                                 <td><?php echo $newDate ?></td>
                                 <td style="text-align:center" width="200px">
-                                    <a href="<?= base_url('uploads/file/opop/' . $file->nama_file); ?>" class="btn btn-block btn-primary">Download</a>
-                                    <a href="<?= site_url('file/update/' . $file->id_file); ?>" class="btn btn-block btn-primary">Update</a>
-                                    <a href="<?= site_url('file/delete/' . $file->id_file); ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus ?')" class="btn btn-block btn-danger">Delete</a>
-                                    <?php
-                                    // echo anchor(site_url('file/delete/' . $file->id_file), 'Delete', 'onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
-                                    ?>
+                                    <a href="<?= base_url('uploads/file/opop/' . $file->nama_file); ?>" class="btn btn-block btn-primary btn-sm">Download</a>
+                                    <a href="<?= site_url('file/update/' . $file->id_file); ?>" class="btn btn-block btn-warning btn-sm">Update</a>
+                                    <a href="<?= site_url('file/delete/' . $file->id_file); ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus ?')" class="btn btn-block btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                         <?php
