@@ -10,7 +10,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Title Icon -->
-  <link rel="icon" href="<?= base_url(); ?>assets\dist\img" type="image/x-icon">
+  <link rel="icon" href="<?= base_url(); ?>assets/dist/img" type="image/x-icon">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bbootstrap 4 -->

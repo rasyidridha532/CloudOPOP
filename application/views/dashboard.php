@@ -26,9 +26,9 @@
         <!-- ./col -->
         <div class="col-lg-3 col-6">
           <!-- small box -->
-          <div class="small-box bg-gray">
+          <div class="small-box bg-white">
             <div class="inner">
-              <h3><?= $hitungPesantren; ?></h3>
+              <h3><?= $hitung_pesantren; ?></h3>
 
               <p>Pesantren yang Terdaftar di OPOP</p>
             </div>
@@ -39,6 +39,20 @@
           </div>
         </div>
         <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3><?= $hitung_file; ?></h3>
+
+              <p>Jumlah File di Server</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-file"></i>
+            </div>
+            <a href="<?= base_url('file'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
       </div>
       <!-- /.row -->
       <!-- Main row -->
