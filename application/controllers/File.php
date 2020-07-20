@@ -10,6 +10,11 @@ class File extends CI_Controller
         parent::__construct();
         $this->load->model('File_model');
         $this->load->library('form_validation');
+
+        $status = $this->session->userdata('status');
+        if (isset($status) != "login") {
+            redirect(base_url("auth"));
+        }
     }
 
     public function index()
@@ -173,6 +178,7 @@ class File extends CI_Controller
 
         if (!$this->upload->do_upload('file')) {
             $this->session->set_flashdata('message', '<div class="alert alert-failed">File tidak support!</div>');
+            redirect(site_url('file/create'));
         } else {
             $fileData = $this->upload->data();
             $uploadFile['namafile'] = $fileData['file_name'];

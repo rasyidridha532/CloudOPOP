@@ -10,6 +10,11 @@ class Pesantren extends CI_Controller
         parent::__construct();
         $this->load->model('Pesantren_model');
         $this->load->library('form_validation');
+
+        $status = $this->session->userdata('status');
+        if (isset($status) != "login") {
+            redirect(base_url("auth"));
+        }
     }
 
     public function index()
