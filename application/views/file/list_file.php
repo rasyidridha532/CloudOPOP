@@ -19,9 +19,9 @@
                 <div class="card-header">
                     <div class="card-tools">
                         <form action="<?php echo site_url('file'); ?>" class="form-inline" method="get">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
-                                <span class="input-group-btn">
+                            <div class="input-group input-group-sm" style="width: 250px;">
+                                <input type="text" class="form-control" name="q" placeholder="Cari File" value="<?php echo $q; ?>">
+                                <div class="input-group-append">
                                     <?php
                                     if ($q <> '') {
                                     ?>
@@ -30,7 +30,7 @@
                                     }
                                     ?>
                                     <button class="btn btn-default" type="submit"><i class="fas fa-search"></i></button>
-                                </span>
+                                </div>
                             </div>
                         </form>
                     </div>
