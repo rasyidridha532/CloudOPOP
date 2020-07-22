@@ -29,7 +29,7 @@
                                     <?php
                                     }
                                     ?>
-                                    <button class="btn btn-primary" type="submit">Search</button>
+                                    <button class="btn btn-default" type="submit"><i class="fas fa-search"></i></button>
                                 </span>
                             </div>
                         </form>

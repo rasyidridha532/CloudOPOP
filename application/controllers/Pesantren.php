@@ -68,7 +68,7 @@ class Pesantren extends CI_Controller
             'id_kabupaten' => set_value('id_kabupaten'),
             'id_kecamatan' => set_value('id_kecamatan'),
             'link_pesantren' => set_value('link_pesantren'),
-            'title' => 'Tambah Pesantren',
+            'title' => 'Tambah Data Pesantren',
             'foto' => $fotoprofil,
             'nama' => $nama,
             'role' => $role

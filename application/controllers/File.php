@@ -160,7 +160,7 @@ class File extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success">File Berhasil Dihapus!</div>');
             redirect(site_url('file'));
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-failed">Data Tidak Ditemukan!</div');
+            $this->session->set_flashdata('message', '<div class="alert alert-failed">Data Tidak Ditemukan!</div>');
             redirect(site_url('file'));
         }
     }
