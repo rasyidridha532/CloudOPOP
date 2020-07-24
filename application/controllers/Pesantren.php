@@ -209,7 +209,7 @@ class Pesantren extends CI_Controller
     public function excel()
     {
         $this->load->helper('exportexcel');
-        $namaFile = "tbl_pesantren.xls";
+        $namaFile = "Data Pesantren.xls";
         $judul = "tbl_pesantren";
         $tablehead = 0;
         $tablebody = 1;
