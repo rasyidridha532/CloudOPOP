@@ -63,7 +63,6 @@
 
           <div class="row">
             <div class="col-xs-8">
-              Lupa Password? Silahkan Klik <a href="forgot-password.html">Disini</a><br>
               <a href="<?php echo base_url('auth/register'); ?>" class="text-center">Register</a>
             </div>
             <div class="col-xs-4 pl-3">
