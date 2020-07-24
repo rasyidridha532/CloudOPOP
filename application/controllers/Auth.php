@@ -107,7 +107,7 @@ class Auth extends CI_Controller
             'email' => $this->input->post('email', true),
             'password' => sha1($this->input->post('password1')),
             'image' => 'avatar5.png',
-            'id_role' => 2
+            'id_role' => 1
         ];
 
         $this->db->insert('tbl_users', $data);
