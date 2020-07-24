@@ -146,6 +146,7 @@ class File extends CI_Controller
 
             unlink('./uploads/file/opop/' . $old_file);
             $this->File_model->update($this->input->post('id_file', TRUE), $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success">File Berhasil Diubah!</div>');
             redirect(site_url('file'));
         }
     }
