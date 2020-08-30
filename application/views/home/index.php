@@ -112,7 +112,7 @@
   <!-- Testimonials -->
   <section class="testimonials text-center bg-light">
     <div class="container">
-      <h2 class="mb-5">Pesantren yang terdaftar di OPOP saat ini</h2>
+      <h2 class="mb-5">Pesantren yang terdaftar di OPOP</h2>
       <div class="row">
         <div class="col-lg-4">
           <div class="testimonial-item mx-auto mb-5 mb-lg-0">
