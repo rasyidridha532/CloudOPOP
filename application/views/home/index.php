@@ -28,7 +28,8 @@
   <!-- Navigation -->
   <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
-      <a class="navbar-brand" href="#"><img src="<?= base_url(); ?>assets/dist/img/logo_opop.png">OPOP</a>
+      <a class="navbar-brand" href="#"><img src="<?= base_url(); ?>assets/dist/img/logo_opop.png" width="100" height="100">OPOP</a>
+      <a href="#registrasi">Cara Registrasi</a>
       <a class="btn btn-primary" href="<?= base_url('auth'); ?>">Log In</a>
     </div>
   </nav>
@@ -52,7 +53,7 @@
         <div class="col-lg-4">
           <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
             <div class="features-icons-icon d-flex">
-              <i class="fa-leaf m-auto text-primary"></i>
+              <i class="fab fa-leaf m-auto text-primary"></i>
             </div>
             <h3>Mengapa OPOP?</h3>
             <p class="lead mb-0">Sebagian besar pesantren di Jawa Barat belum mampu mandiri secara ekonomi untuk membiayai kebutuhan operasional maupun pengembangan sarana dan prasarana pesantren.</p>
@@ -61,7 +62,7 @@
         <div class="col-lg-4">
           <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
             <div class="features-icons-icon d-flex">
-              <i class="fa-chart-line m-auto text-primary"></i>
+              <i class="fab fa-chart-line m-auto text-primary"></i>
             </div>
             <h3>Target OPOP</h3>
             <p class="lead mb-0">Pesantren yang memiliki visi dan niat untuk menjalankan usaha, memiliki SDM, memiliki lahan, ketersediaan bahan baku, potensi pasar dan lain-lain.</p>
@@ -70,7 +71,7 @@
         <div class="col-lg-4">
           <div class="features-icons-item mx-auto mb-0 mb-lg-3">
             <div class="features-icons-icon d-flex">
-              <i class="fa-store m-auto text-primary"></i>
+              <i class="fab fa-store m-auto text-primary"></i>
             </div>
             <h3>Tujuan OPOP</h3>
             <p class="lead mb-0">Membangun kemandirian pesantren melalui pemberdayaan ekonomi dengan cara membantu pesantren dalam memilih komoditi yang laku di pasar, memberi pelatihan dan pendampingan.</p>
@@ -81,7 +82,7 @@
   </section>
 
   <!-- Image Showcases -->
-  <section class="showcase">
+  <section class="showcase" id="registrasi">
     <div class="container-fluid p-0">
       <div class="row no-gutters">
 
@@ -111,7 +112,7 @@
   <!-- Testimonials -->
   <section class="testimonials text-center bg-light">
     <div class="container">
-      <h2 class="mb-5">What people are saying...</h2>
+      <h2 class="mb-5">Pesantren yang terdaftar di OPOP saat ini</h2>
       <div class="row">
         <div class="col-lg-4">
           <div class="testimonial-item mx-auto mb-5 mb-lg-0">
@@ -133,30 +134,6 @@
             <h5>Sarah W.</h5>
             <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Call to Action -->
-  <section class="call-to-action text-white text-center">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-9 mx-auto">
-          <h2 class="mb-4">Ready to get started? Sign up now!</h2>
-        </div>
-        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form>
-            <div class="form-row">
-              <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
-              </div>
-              <div class="col-12 col-md-3">
-                <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
-              </div>
-            </div>
-          </form>
         </div>
       </div>
     </div>
@@ -189,17 +166,17 @@
         <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
           <ul class="list-inline mb-0">
             <li class="list-inline-item mr-3">
-              <a href="#">
+              <a href="https://www.facebook.com/pesantrenjuara">
                 <i class="fab fa-facebook fa-2x fa-fw"></i>
               </a>
             </li>
             <li class="list-inline-item mr-3">
-              <a href="#">
-                <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+              <a href="https://www.youtube.com/channel/UCWmBmnx2laPk1QAVQqQ-RSQ">
+                <i class="fab fa-youtube-square fa-2x fa-fw"></i>
               </a>
             </li>
             <li class="list-inline-item">
-              <a href="#">
+              <a href="https://www.instagram.com/opopjabar">
                 <i class="fab fa-instagram fa-2x fa-fw"></i>
               </a>
             </li>
