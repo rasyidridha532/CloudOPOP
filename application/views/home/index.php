@@ -28,8 +28,8 @@
   <!-- Navigation -->
   <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Start Bootstrap</a>
-      <a class="btn btn-primary" href="#">Sign In</a>
+      <a class="navbar-brand" href="#"><img src="<?= base_url(); ?>assets/dist/img/logo_opop.png">OPOP</a>
+      <a class="btn btn-primary" href="<?= base_url('auth'); ?>">Log In</a>
     </div>
   </nav>
 
@@ -39,19 +39,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-9 mx-auto">
-          <h1 class="mb-5">Build a landing page for your business or project and generate more leads!</h1>
-        </div>
-        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form>
-            <div class="form-row">
-              <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
-              </div>
-              <div class="col-12 col-md-3">
-                <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
-              </div>
-            </div>
-          </form>
+          <h1 class="mb-5">One Pesantren One Product</h1>
         </div>
       </div>
     </div>
@@ -64,28 +52,28 @@
         <div class="col-lg-4">
           <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
             <div class="features-icons-icon d-flex">
-              <i class="icon-screen-desktop m-auto text-primary"></i>
+              <i class="fa-leaf m-auto text-primary"></i>
             </div>
-            <h3>Fully Responsive</h3>
-            <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
+            <h3>Mengapa OPOP?</h3>
+            <p class="lead mb-0">Sebagian besar pesantren di Jawa Barat belum mampu mandiri secara ekonomi untuk membiayai kebutuhan operasional maupun pengembangan sarana dan prasarana pesantren.</p>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
             <div class="features-icons-icon d-flex">
-              <i class="icon-layers m-auto text-primary"></i>
+              <i class="fa-chart-line m-auto text-primary"></i>
             </div>
-            <h3>Bootstrap 4 Ready</h3>
-            <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>
+            <h3>Target OPOP</h3>
+            <p class="lead mb-0">Pesantren yang memiliki visi dan niat untuk menjalankan usaha, memiliki SDM, memiliki lahan, ketersediaan bahan baku, potensi pasar dan lain-lain.</p>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="features-icons-item mx-auto mb-0 mb-lg-3">
             <div class="features-icons-icon d-flex">
-              <i class="icon-check m-auto text-primary"></i>
+              <i class="fa-store m-auto text-primary"></i>
             </div>
-            <h3>Easy to Use</h3>
-            <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+            <h3>Tujuan OPOP</h3>
+            <p class="lead mb-0">Membangun kemandirian pesantren melalui pemberdayaan ekonomi dengan cara membantu pesantren dalam memilih komoditi yang laku di pasar, memberi pelatihan dan pendampingan.</p>
           </div>
         </div>
       </div>
