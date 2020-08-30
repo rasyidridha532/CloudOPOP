@@ -86,21 +86,21 @@
     <div class="container-fluid p-0">
       <div class="row no-gutters">
 
-        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('/assets/dist/img/pesantren.jpg');"></div>
+        <div class="col-lg-3 order-lg-2 text-white showcase-img" style="background-image: url('/assets/dist/img/pesantren.jpg');"></div>
         <div class="col-lg-6 order-lg-1 my-auto showcase-text">
           <h2>1. Syarat Untuk Pesantren</h2>
           <p class="lead mb-0">Syarat pendaftaran untuk pesantren</p>
         </div>
       </div>
       <div class="row no-gutters">
-        <div class="col-lg-6 text-white showcase-img" style="background-image: url('/assets/dist/img/ppesantren1.jpg');"></div>
+        <div class="col-lg-3 text-white showcase-img" style="background-image: url('/assets/dist/img/ppesantren1.jpg');"></div>
         <div class="col-lg-6 my-auto showcase-text">
           <h2>2. Syarat untuk Perwakilan Pesantren</h2>
           <p class="lead mb-0">Syarat pendaftaran untuk perwakilan pesantren</p>
         </div>
       </div>
       <div class="row no-gutters">
-        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('/assets/dist/img/ppesantren2.jpg');"></div>
+        <div class="col-lg-3 order-lg-2 text-white showcase-img" style="background-image: url('/assets/dist/img/ppesantren2.jpg');"></div>
         <div class="col-lg-6 order-lg-1 my-auto showcase-text">
           <h2>Registrasi ke OPOP</h2>
           <p class="lead mb-0">Registrasi di link OPOP. <a href="https://opop.jabarprov.go.id/">Link Registrasi</a></p>
