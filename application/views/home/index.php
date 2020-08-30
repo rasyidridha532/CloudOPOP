@@ -28,7 +28,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
-      <a class="navbar-brand" href="#"><img src="<?= base_url(); ?>assets/dist/img/logo_opop.png" width="100" height="100">OPOP</a>
+      <a class="navbar-brand" href="#"><img src="<?= base_url(); ?>assets/dist/img/logo_opop.png" width="150" height="50"></a>
       <a href="#registrasi">Cara Registrasi</a>
       <a class="btn btn-primary" href="<?= base_url('auth'); ?>">Log In</a>
     </div>
@@ -53,7 +53,7 @@
         <div class="col-lg-4">
           <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
             <div class="features-icons-icon d-flex">
-              <i class="fab fa-leaf m-auto text-primary"></i>
+              <i class="fab fa-envira m-auto text-primary"></i>
             </div>
             <h3>Mengapa OPOP?</h3>
             <p class="lead mb-0">Sebagian besar pesantren di Jawa Barat belum mampu mandiri secara ekonomi untuk membiayai kebutuhan operasional maupun pengembangan sarana dan prasarana pesantren.</p>
@@ -62,7 +62,7 @@
         <div class="col-lg-4">
           <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
             <div class="features-icons-icon d-flex">
-              <i class="fab fa-chart-line m-auto text-primary"></i>
+              <i class="far fa-chart-bar m-auto text-primary"></i>
             </div>
             <h3>Target OPOP</h3>
             <p class="lead mb-0">Pesantren yang memiliki visi dan niat untuk menjalankan usaha, memiliki SDM, memiliki lahan, ketersediaan bahan baku, potensi pasar dan lain-lain.</p>
@@ -71,7 +71,7 @@
         <div class="col-lg-4">
           <div class="features-icons-item mx-auto mb-0 mb-lg-3">
             <div class="features-icons-icon d-flex">
-              <i class="fab fa-store m-auto text-primary"></i>
+              <i class="fas fa-store m-auto text-primary"></i>
             </div>
             <h3>Tujuan OPOP</h3>
             <p class="lead mb-0">Membangun kemandirian pesantren melalui pemberdayaan ekonomi dengan cara membantu pesantren dalam memilih komoditi yang laku di pasar, memberi pelatihan dan pendampingan.</p>
@@ -144,24 +144,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-          <ul class="list-inline mb-2">
-            <li class="list-inline-item">
-              <a href="#">About</a>
-            </li>
-            <li class="list-inline-item">&sdot;</li>
-            <li class="list-inline-item">
-              <a href="#">Contact</a>
-            </li>
-            <li class="list-inline-item">&sdot;</li>
-            <li class="list-inline-item">
-              <a href="#">Terms of Use</a>
-            </li>
-            <li class="list-inline-item">&sdot;</li>
-            <li class="list-inline-item">
-              <a href="#">Privacy Policy</a>
-            </li>
-          </ul>
-          <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2020. All Rights Reserved.</p>
+          <p class="text-muted small mb-4 mb-lg-0">&copy; OPOP 2020. All Rights Reserved.</p>
         </div>
         <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
           <ul class="list-inline mb-0">
